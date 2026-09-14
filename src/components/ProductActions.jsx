@@ -16,7 +16,7 @@ export default function ProductActions({ product }) {
     if (!product) return;
 
     add(product);
-    alert("Product added to cart!");
+
   };
 
   const handleBuyNow = () => {
