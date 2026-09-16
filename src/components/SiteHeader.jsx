@@ -10,7 +10,12 @@ export default function SiteHeader(){
   <header className="header">
    <div className="header-inner">
     <button className="icon-btn mobile-only" onClick={()=>setOpen(!open)} aria-label="Menu">{open?"×":"☰"}</button>
-    <Link href="/" className="logo">RICHCLUB</Link>
+    <Link href="/" className="brand-logo">
+  <span className="brand-rich">Rich</span>
+  <span className="brand-club">Club</span>
+
+  <small>SEE MORE. LIVE BOLDER.</small>
+</Link>
     <nav className="desktop-nav">{links.map(([t,h])=><Link key={t} href={h}>{t}</Link>)}</nav>
     <div className="header-actions">
       <button className="search-btn" onClick={()=>setSearch(true)}>⌕ <span>Search</span></button>

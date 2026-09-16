@@ -1324,3 +1324,56 @@ button {
     object-fit: cover;
   }
 }
+
+/* =========================
+   RICHCLUB WORDMARK
+========================= */
+
+.brand-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  line-height: 1;
+  color: #111;
+}
+
+.brand-logo > span {
+  display: inline-block;
+}
+
+.brand-rich {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+}
+
+.brand-club {
+  margin-left: 1px;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.brand-logo small {
+  margin-top: 5px;
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  white-space: nowrap;
+  color: #555;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brand-rich,
+  .brand-club {
+    font-size: 27px;
+  }
+
+  .brand-logo small {
+    margin-top: 4px;
+    font-size: 5px;
+    letter-spacing: 0.22em;
+  }
+}
