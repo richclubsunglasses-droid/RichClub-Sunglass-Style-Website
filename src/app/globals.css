@@ -1273,3 +1273,54 @@ button {
     font-size: 23px;
   }
 }
+
+/* =========================
+   RICHCLUB HERO BANNER
+========================= */
+
+.hero-banner-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.hero-banner-link {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.hero-banner-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .hero-banner-section {
+    max-width: 100%;
+  }
+
+  .hero-banner-image {
+    max-height: 850px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-banner-section {
+    width: 100%;
+  }
+
+  .hero-banner-image {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    object-fit: cover;
+  }
+}

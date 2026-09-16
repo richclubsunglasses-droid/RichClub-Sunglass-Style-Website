@@ -76,6 +76,7 @@ export default function ProductCard({ product }) {
   className="product-name"
 >
   {product.name}
+
 </Link>
 
 

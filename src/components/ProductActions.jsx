@@ -4,7 +4,7 @@ import { useCart } from "@/components/CartProvider";
 import { useRouter } from "next/navigation";
 
 export default function ProductActions({ product }) {
-  const { add } = useCart();
+  const { add, count } = useCart();
   const router = useRouter();
 
   const price =
@@ -43,6 +43,17 @@ export default function ProductActions({ product }) {
       >
         BUY NOW — ₹{price.toLocaleString("en-IN")}
       </button>
+      {count > 0 && (
+        <button
+          type="button"
+          className="floating-cart-btn"
+          onClick={() => router.push("/cart")}
+          aria-label={`Go to cart, ${count} items`}
+        >
+          <span className="floating-cart-icon">🛒</span>
+          <span className="floating-cart-count">{count}</span>
+        </button>
+      )}
     </div>
   );
 }
