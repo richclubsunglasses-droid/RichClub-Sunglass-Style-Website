@@ -7,6 +7,8 @@ import { useCart } from "./CartProvider";
 export default function ProductCard({ product }) {
   const { add } = useCart();
   const [currentImage, setCurrentImage] = useState(0);
+  const price = Number(product?.price || 0);
+const compareAtPrice = Number(product?.compareAt || 0);
 
   // Multiple images support
   const images =
@@ -79,27 +81,17 @@ export default function ProductCard({ product }) {
 
 </Link>
 
+       <div className="price-row">
+  <strong>
+    Rs.{Number(product.price).toLocaleString("en-IN")}
+  </strong>
 
-        <div className="rating">
-          ★★★★★
-          <span>
-            {product.rating} ({product.reviews})
-          </span>
-        </div>
-
-        <div className="price-row">
-          <strong>
-            ₹{product.price.toLocaleString("en-IN")}
-          </strong>
-
-          <del>
-            ₹{product.compareAt.toLocaleString("en-IN")}
-          </del>
-
-          <button onClick={() => add(product)}>
-            Add
-          </button>
-        </div>
+  {Number(product.compareAt) > Number(product.price) && (
+    <del>
+      Rs.{Number(product.compareAt).toLocaleString("en-IN")}
+    </del>
+  )}
+</div>
       </div>
     </article>
   );

@@ -820,7 +820,10 @@ button {
 }
 
 .product-info {
-  padding-top: 16px;
+  padding-top: 6px !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: block !important;
 }
 
 .product-name {
@@ -1377,4 +1380,245 @@ button {
     font-size: 5px;
     letter-spacing: 0.20em;
   }
+}
+
+/* =========================
+   PREMIUM BENEFITS STRIP
+========================= */
+
+.benefits-strip {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid #e8e8e8;
+  background: #ffffff;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 82px;
+  padding: 16px 20px;
+  border-right: 1px solid #e8e8e8;
+}
+
+.benefit-item:last-child {
+  border-right: none;
+}
+
+.benefit-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d8e9f5;
+  border-radius: 50%;
+  color: #168bd0;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.benefit-item strong {
+  display: block;
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.benefit-item small {
+  display: block;
+  margin-top: 4px;
+  color: #777;
+  font-size: 10px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .benefits-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .benefit-item {
+    min-height: 75px;
+    padding: 10px 5px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+    border-right: 1px solid #e8e8e8;
+    border-bottom: none;
+  }
+
+  .benefit-item:last-child {
+    border-right: none;
+  }
+
+  .benefit-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 11px;
+  }
+
+  .benefit-item strong {
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  .benefit-item small {
+    font-size: 6.5px;
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+}
+
+.best-sellers-title {
+  background-image: linear-gradient(
+    90deg,
+    #111827 0%,
+    #2563eb 50%,
+    #06b6d4 100%
+  ) !important;
+
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+
+  display: inline-block;
+}
+
+.new-arrivals-title {
+  background: linear-gradient(90deg, #111827 0%, #2563eb 50%, #06b6d4 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+}
+
+.product-name {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 768px) {
+  .product-name {
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.product-name {
+  display: block !important;
+  width: 100% !important;
+  max-width: 220px !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+@media (max-width: 768px) {
+  .product-name {
+    max-width: 150px !important;
+  }
+}
+.product-name {
+  margin-bottom: 8px !important;
+}
+
+/* Compact product pricing */
+.product-info {
+  padding-top: 6px !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.product-name {
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+
+.price-row {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  margin-top: 8px !important;
+}
+
+.price-row strong {
+  color: #c94747 !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+}
+
+.price-row del {
+  color: #777 !important;
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  text-decoration: line-through;
+}
+
+/* HOME PRODUCT COMPARE PRICE */
+.price-row {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  margin-top: 0px !important;
+  padding: 0 !important;
+}
+
+.price-row strong {
+  color: #c94747 !important;
+  font-size: 19px !important;
+  font-weight: 400 !important;
+}
+
+.price-row del {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #777 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  text-decoration: line-through !important;
+}
+
+/* HOME PRODUCT CARD - REMOVE TITLE/PRICE GAP */
+.product-card .product-info {
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding-top: 6px !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+}
+
+.product-card .product-name {
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.product-card .price-row {
+  display: flex !important;
+  margin: 2px 0 0 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
 }
