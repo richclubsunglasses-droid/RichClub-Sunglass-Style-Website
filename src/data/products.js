@@ -11,14 +11,6 @@ export const products = rawProducts.map((product) => ({
 
   images: product.images?.map((img) => img.url) || [],
 
-  badge: product.tags?.includes("bestseller")
-    ? "BESTSELLER"
-    : "",
-
-  rating: 4.8,
-
-  reviews: product.ratingCount || 0,
-
   description: product.descriptionHtml || "",
 
   features: product.tags || [],

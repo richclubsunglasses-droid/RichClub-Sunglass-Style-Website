@@ -7,10 +7,10 @@ const CartContext = createContext(null);
 function getProductId(product) {
   return String(
     product?.id ||
-    product?.slug ||
-    product?.handle ||
-    product?.title ||
-    "product-" + Date.now()
+      product?.slug ||
+      product?.handle ||
+      product?.title ||
+      "product-" + Date.now()
   );
 }
 
@@ -19,36 +19,46 @@ function safeNumber(value) {
   return Number.isFinite(number) ? number : 0;
 }
 
-function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
 
-  // Load saved cart
+export default function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
+  const [hydrated, setHydrated] = useState(false);
+
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const openCart = () => setCartOpen(true);
+  const closeCart = () => setCartOpen(false);
+
+  // Load cart from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("rc_cart");
+      const savedCart = localStorage.getItem("rc_cart");
 
-      if (saved) {
-        const parsed = JSON.parse(saved);
+      if (savedCart) {
+        const parsedCart = JSON.parse(savedCart);
 
-        if (Array.isArray(parsed)) {
-          setCart(parsed);
+        if (Array.isArray(parsedCart)) {
+          setCart(parsedCart);
         }
       }
     } catch (error) {
       console.error("Could not load cart:", error);
+    } finally {
+      setHydrated(true);
     }
   }, []);
 
-  // Save cart
+  // Save cart only AFTER localStorage has been loaded
   useEffect(() => {
+    if (!hydrated) return;
+
     try {
       localStorage.setItem("rc_cart", JSON.stringify(cart));
     } catch (error) {
       console.error("Could not save cart:", error);
     }
-  }, [cart]);
+  }, [cart, hydrated]);
 
-  // Add product
   const add = (product) => {
     if (!product) return;
 
@@ -94,7 +104,6 @@ function CartProvider({ children }) {
     });
   };
 
-  // Change quantity
   const change = (id, amount) => {
     setCart((currentCart) =>
       currentCart
@@ -113,7 +122,6 @@ function CartProvider({ children }) {
     );
   };
 
-  // Remove product
   const remove = (id) => {
     setCart((currentCart) =>
       currentCart.filter(
@@ -122,12 +130,10 @@ function CartProvider({ children }) {
     );
   };
 
-  // Clear cart
   const clear = () => {
     setCart([]);
   };
 
-  // Total
   const total = useMemo(() => {
     return cart.reduce(
       (sum, item) =>
@@ -140,23 +146,27 @@ function CartProvider({ children }) {
 
   const count = useMemo(() => {
     return cart.reduce(
-      (sum, item) => sum + safeNumber(item.quantity || 1),
+      (sum, item) =>
+        sum + safeNumber(item.quantity || 1),
       0
     );
   }, [cart]);
 
   return (
     <CartContext.Provider
-      value={{
-        cart,
-        add,
-        change,
-        remove,
-        clear,
-        total,
-        count,
-      }}
-    >
+  value={{
+    cart,
+    add,
+    change,
+    remove,
+    clear,
+    total,
+    count,
+    cartOpen,
+    openCart,
+    closeCart,
+  }}
+>
       {children}
     </CartContext.Provider>
   );
@@ -173,5 +183,3 @@ export function useCart() {
 
   return context;
 }
-export { CartProvider };
-export default CartProvider;

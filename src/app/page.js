@@ -50,7 +50,50 @@ export default function Home(){
   </div>
 </section>
    <section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">THIS MONTH</p><h2 className="section-title new-arrivals-title">New Arrivals</h2></div><Link className="view-all" href="/shop?sort=new">View all</Link></div><ProductGrid products={newArrivals}/></div></section>
-   <section className="section dark-section"><div className="container"><div className="section-head"><div><p className="eyebrow">FIND YOUR FIT</p><h2 className="section-title">Shop by Shape</h2></div><Link className="view-all" href="/shop">Explore</Link></div><div className="shape-grid">{[["Rectangle","/Product-1.png"],["Square","/Product-2.png"],["Round","/Product-3.png"],["Hexagon","/sunglasses.png"]].map(([name,img])=><Link href={"/shop?shape="+name} className="shape-card" key={name}><img src={img} alt=""/><h3>{name}</h3><span>SHOP NOW →</span></Link>)}</div></div></section>
+   <section className="section dark-section">
+  <div className="container">
+
+    <div className="section-head">
+      <div>
+        <p className="eyebrow">FIND YOUR FIT</p>
+        <h2 className="section-title">Shop by Shape</h2>
+      </div>
+
+      <Link className="view-all" href="/shop">
+        Explore
+      </Link>
+    </div>
+
+    <div className="shape-grid">
+
+      <Link href="/shop?shape=Rectangle" className="shape-card">
+        <img src="/Product-1.png" alt="Rectangle sunglasses" />
+        <h3>Rectangle</h3>
+        <span>SHOP NOW →</span>
+      </Link>
+
+      <Link href="/shop?shape=Square" className="shape-card">
+        <img src="/Product-2.png" alt="Square sunglasses" />
+        <h3>Square</h3>
+        <span>SHOP NOW →</span>
+      </Link>
+
+      <Link href="/shop?shape=Round" className="shape-card">
+        <img src="/Product-3.png" alt="Round sunglasses" />
+        <h3>Round</h3>
+        <span>SHOP NOW →</span>
+      </Link>
+
+      <Link href="/shop?shape=Hexagon" className="shape-card">
+        <img src="/sunglasses.png" alt="Hexagon sunglasses" />
+        <h3>Hexagon</h3>
+        <span>SHOP NOW →</span>
+      </Link>
+
+    </div>
+
+  </div>
+</section>
    <section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">2026 EDIT</p><h2 className="section-title best-sellers-title">BEST SELLERS</h2></div><Link className="view-all" href="/shop?sort=popular">View all</Link></div><ProductGrid products={hot}/></div></section>
    <section className="section"><div className="container"><div className="look"><div className="look-main"><img src="/Product-1.png" alt="RichClub collection"/><div className="look-caption"><h3>Shop the look</h3><span>CURATED RICHCLUB STYLE →</span></div></div><div className="look-side"><img src="/Product-3.png" alt="RichClub eyewear"/><div className="look-caption"><h3>Blue hour.</h3><span>EXPLORE POLARIZED →</span></div></div></div></div></section>
    <section className="editorial"><img src="/Product-2.png" alt="RichClub eyewear editorial"/><div className="editorial-copy"><p className="eyebrow">ABOUT RICHCLUB</p><h2>Eyewear made for your everyday world.</h2><p>RichClub is built around one idea: great eyewear should feel as good as it looks. Clean silhouettes, confident details and everyday comfort come together in every collection.</p><Link href="/about" className="button">OUR STORY</Link></div></section>

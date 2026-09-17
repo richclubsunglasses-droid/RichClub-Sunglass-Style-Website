@@ -2,6 +2,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CartProvider from "@/components/CartProvider";
+import CartDrawer from "@/components/CartDrawer";
 
 export const metadata = {
   title: "RICHCLUB — Premium Eyewear",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
       <body>
         <CartProvider>
           <SiteHeader />
+          <CartDrawer />
           {children}
           <SiteFooter />
         </CartProvider>

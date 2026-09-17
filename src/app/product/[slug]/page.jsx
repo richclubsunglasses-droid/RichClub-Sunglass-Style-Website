@@ -34,32 +34,22 @@ export default async function ProductPage({ params }) {
           {/* PRODUCT DETAILS */}
           <div className="product-detail-copy">
 
-            <p className="eyebrow">
-              {product.category} · {product.shape}
-            </p>
 
             <h1>{product.name}</h1>
-            <ProductActions product={product} />
 
-            <div className="rating">
-              ★★★★★
-              <span>
-                {product.rating} ({product.reviews} reviews)
-              </span>
-            </div>
+<p className="detail-price">
+  <span className="current-detail-price">
+    Rs.{product.price.toLocaleString("en-IN")}
+  </span>
 
-            <p className="detail-price">
-              ₹{product.price.toLocaleString("en-IN")}
-              {" "}
-              <del
-                style={{
-                  fontSize: 14,
-                  color: "#999",
-                }}
-              >
-                ₹{product.compareAt.toLocaleString("en-IN")}
-              </del>
-            </p>
+  {product.compareAt > product.price && (
+    <del className="compare-detail-price">
+      Rs.{product.compareAt.toLocaleString("en-IN")}
+    </del>
+  )}
+</p>
+
+<ProductActions product={product} />
 
             {/* DESCRIPTION */}
             <div
